@@ -21,6 +21,12 @@ HTML XML
 3. 客户端启动一个随机端口，经过三次握手进入到服务器的网卡。
 4. 浏览器就可以发送真正的请求
 5. 服务器接收到HTTP请求，解析路径和参数，经后台的处理完成响应。
+6. 浏览器可以收到服务器端的响应，并开始渲染页面。DOM树+CSS树=Render Tree
+7. 添加用户与界面的交互，绑定一些事件，执行一些动态的行为.
+8. 还可刷新一些局部内容。
 
+##URL
+![url](http://7xjf2l.com2.z0.glb.qiniucdn.com/url.jpg)
+##请求和响应
 ![请求和响应](http://7xjf2l.com2.z0.glb.qiniucdn.com/request.jpg)
    
