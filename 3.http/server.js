@@ -21,4 +21,4 @@ http.createServer(function(req,res){
     }
 
 
-}).listen(80);//在8080监听
+}).listen(8080);//在8080监听
