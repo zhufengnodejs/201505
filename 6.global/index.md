@@ -7,7 +7,6 @@
 #console  
 控制台对象  
 ##process
- 
 ##argv
 ##env
 ##pid
