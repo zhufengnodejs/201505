@@ -34,9 +34,9 @@ Animal.prototype.food = 'meat';
 Animal.prototype.eat = function(){
     console.log('eat'+this.food);
 }
-var house = new House('horse','grass');
+/*var house = new House('horse','grass');
 console.log(house.getName());
-house.eat();
+house.eat();*/
 /*
 var tiger = new Animal('tiger');
 var mouse = new Animal('mouse','rice');
@@ -46,3 +46,26 @@ console.log(tiger.getName());// 访问自己的属性 tiger
 tiger.eat();//eat undefined
 mouse.eat(); //eat rice
 */
+
+
+function Dog(){
+
+}
+Object.prototype.name ='zfpx';
+Dog.prototype.name = 'Dog2';
+
+
+var d = new Object();
+var dog = new Dog();
+console.log(d.name);//zfpx
+console.log(dog.name);//Dog
+console.log(dog.__proto__.name);//Dog
+console.log(dog.__proto__.__proto__.name);//zfpx
+console.log(dog.__proto__.constructor.prototype.name);//Dog
+console.log(dog.__proto__.constructor.name);
+
+
+function Dogxx(){
+
+}
+console.log(Dogxx.name);
