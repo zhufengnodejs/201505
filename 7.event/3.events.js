@@ -11,6 +11,14 @@ Event.prototype.on = function(eventName,listener){
         this._events[eventName] = [listener];
     }
 }
+
+Event.prototype.once = function(eventName,listener){
+    if(this._events[eventName]){
+        this._events[eventName].push(listener);
+    }else{
+        this._events[eventName] = [listener];
+    }
+}
 //发射事件
 Event.prototype.trigger = function(eventName){
     var handlers = this._events[eventName];
