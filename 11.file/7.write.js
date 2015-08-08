@@ -29,9 +29,11 @@ fs.open('./msg.txt','xw',function(err,fd){
    if(err)
     console.log(err);
     console.log(fd);
-    fs.write(fd,new Buffer('珠峰培训'),0,6,null);
-    fs.fsync(fd);//把缓存区里的数据立刻马上迅速同步到目标文件里去
-    fs.close(fd);
+    fs.write(fd,new Buffer('珠峰培训'),0,6,null,function(){
+        fs.fsync(fd,function(){
+            fs.close(fd);
+        });//把缓存区里的数据立刻马上迅速同步到目标文件里去
+    });
 });
 setTimeout(function(){
     fs.open('./msg.txt','w',function(err,fd){
