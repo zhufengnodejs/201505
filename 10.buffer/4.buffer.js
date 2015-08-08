@@ -119,5 +119,9 @@ console.log(Buffer.byteLength("我喜欢"));//返回字符串的字节长度
 console.log(Buffer.isEncoding('utf8'));
 
 Buffer.prototype.copy = function(targetBuffer,targetStart,sourceStart,sourceEnd){
-
+    var _this=this;
+    for(var i=sourceStart;i<sourceEnd;i++){
+        targetBuffer[targetStart]=_this[i];
+        targetStart++;
+    }
 }
