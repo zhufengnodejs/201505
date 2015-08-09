@@ -9,7 +9,7 @@
  *   fs.ReadStream 读取文件流
  *   http.IncomingMessage 客户端请求对象
  *   net.Socket TCP客户端
- *   gzip deflat 数据压缩流
+ *   gzip deflate 数据压缩流
  *  7.
  *
  */
