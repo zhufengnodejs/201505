@@ -7,7 +7,7 @@ var fs = require('fs');
 
 
 
-var server = net.createServer();
+var server = net.createServer({allowHalfOpen:true});//不允许对方自己说离开
 
 server.on('connection', function(socket){
     console.log(socket.remoteAddress,socket.remotePort,socket.localAddress,socket.localPort);
@@ -15,6 +15,9 @@ server.on('connection', function(socket){
     socket.on('data',function(data){
         socket.write('服务说:'+data);
     });
+    setTimeout(function(){
+        socket.close();
+    },10000);
 
     //客户端发起end请求
     socket.on('end',function(){
