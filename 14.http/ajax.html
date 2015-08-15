@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+<script>
+   window.onload = function(){
+       var xhr = new XMLHttpRequest();
+       xhr.open('GET','http://localhost:8080',true);
+       xhr.onreadystatechange = function(){
+           if(this.readyState == 4 && this.status ==200){
+               document.querySelector('#div1').innerHTML =  this.responseText;
+           }
+       }
+       xhr.send();
+   }
+</script>
+</html>
