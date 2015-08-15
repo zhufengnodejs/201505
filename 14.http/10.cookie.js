@@ -19,6 +19,23 @@
  * Secure 只能用在 https里
  */
 
+/**
+ * cookie的问题
+ * 1.安全问题 在客户端能够被篡改，私密数据不能得到保护
+ * 2.浪费带宽，每次请求都要追加
+ *
+ * 使用建议
+ * 1.不要完全信任客户端提交过来的cookie要做验证。
+ * 2 不要存储私密数据
+ * 3.最好设置httpOnly
+ * 4.设置正确的使用范围 domain=a.zfpx.cn
+ * 5.尽可能节约体积，不要存储过多的数据
+ * 6.apache 默认请求头大小不能超过8190字节
+ *
+ *
+ *
+ *
+ */
 var http = require('http');
 var parse = require('./parse');
 var SET_COOKIE = 'Set-Cookie';
@@ -30,18 +47,14 @@ http.createServer(function(req,res){
     }else if(req.pathname == '/write'){
         //res.setHeader(SET_COOKIE,'name=zfpx');
         //res.setHeader(SET_COOKIE,['name=zfpx; domain=a.zfpx.cn; path=/write; HTTP']);
-        res.setHeader(SET_COOKIE,[cookieUtils.serialize('name','zfpx',{
-        domain:'',
-            path:'',
-            httpOnly:'',
-            maxAge:'',
-            expires:''
+
+        res.setHeader(SET_COOKIE,[cookieUtils.serialize('zfkey','xxxxxxxxxxx',{
         })]);
         res.end('hello');
     }else if(req.pathname == '/read'){
-        res.end(req.headers.cookie);
-    }else if(req.pathname == '/read1'){
-        res.end(req.headers.cookie);
+        res.setHeader('Content-Type','text/html;charset=utf8');
+        var isVip =  cookieUtils.parse(req.headers.cookie).isVip-0;
+        res.end(isVip?'你是尊贵的VIP会员':'你是个普通的游客');
     }else{
         res.end('404');
     }
