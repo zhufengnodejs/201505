@@ -1,0 +1,9 @@
+ req.pipe(fs.createWriteStream('./form.txt'));
+        req.body = {
+            username:'111',
+            avatar:{
+                filename:'baidu.png',
+                name:"avatar",
+                path:"./baidu.png"
+            }
+        }
