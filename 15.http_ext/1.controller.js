@@ -29,8 +29,8 @@ http.createServer(function(req,res){
     var oper = paths[2];//得到操作方法
     var args = paths.slice(3);
     if(handler[controller]&& handler[controller][oper]){
-        handler[controller][oper](req,res);
-
+        //handler[controller][oper](req,res);
+        handler[controller][oper].apply(null,[req,res].concat(args));
     }else{
         res.end('404');
     }
