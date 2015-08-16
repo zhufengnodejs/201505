@@ -16,6 +16,7 @@ http.createServer(function(req,res){
     var pathname = url.parse(req.url).pathname;//得到pathname
     var paths = pathname.split('/');// admin/user/add
     var filepath = './route';
+    var retry = false;
     for(var i=1;i<paths.length;i++){
         filepath = filepath+'/'+paths[i];
         var exists = fs.existsSync(filepath);
@@ -25,13 +26,19 @@ http.createServer(function(req,res){
                 break;
             }
         }else{
-            res.end('404');
-            return;
+            if(retry ==true){
+                res.end('404');
+                return;
+            }else{
+                paths[i] = paths[i]+'.js';
+                filepath =filepath.slice(0,filepath.lastIndexOf('/'));
+                i--;
+                retry = true;
+            }
+
         }
     }
     var route = require(filepath);
-    console.log(route);
     var args = paths.slice(i+2);
-    console.log(args);
     route[paths[i+1]].apply(null,[req,res].concat(args));
 }).listen(8080);
