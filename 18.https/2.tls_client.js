@@ -1,30 +1,32 @@
 /**
- * 1.生成客户端的私钥
- * openssl genrsa -out ./client/client.key 1024
- * 2.生成客户端csr
- * openssl req -new -key ./client/client.key -out ./client/client.csr
- * 3.向CA机构申请客户端证书
- * openssl x509 -req -in ./client/client.csr -signkey ./ca/ca.key  -out ./client/client.crt
+ * 1. 创建私钥
+ *  openssl genrsa -out ./client/client.key 1024
+ *  2.生成csr
+ *  openssl req -new -key ./client/client.key -out ./client/client.csr
+ *  3.生成签名证书
+ *  openssl x509 -req -CA ./ca/ca.crt -CAkey ./ca/ca.key -CAcreateserial -in ./client/client.csr  -out ./client/client.crt
  **/
+
 var tls = require('tls');
 var fs = require('fs');
 var options = {
-    rejectUnauthorized:true,
-    key:fs.readFileSync('./client/client.key'),//服务器的私钥
-    cert:fs.readFileSync('./client/client.crt'),//服务器的证书
-    ca:fs.readFileSync('./ca/ca.crt')//指定合法的证书办法机构
+    key:fs.readFileSync('./client/client.key'),
+    cert:fs.readFileSync('./client/client.crt'),
+    ca:fs.readFileSync('./ca/ca.crt')//,
+    //rejectUnauthorized:false //不加会报错
 }
+// 一定要注意，common name要匹配服务器域名，请求的时候也要指定
 var client = tls.connect(8080,'localhost',options,function(){
     console.log('connected');
     client.write('hello');
 });
+client.setEncoding('utf8');
 client.on('data',function(data){
-    console.log(client);
+    console.log(data);
 });
 client.on('end',function(){
     client.close();
 });
-/*
 client.on('error',function(err){
     console.error(err);
-});*/
+});
