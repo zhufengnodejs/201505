@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+</body>
+<script>
+    var socket = new WebSocket('ws://localhost:8080/');
+    socket.onopen = function(){
+        console.log('connected to server');
+        socket.send('hello server');
+    }
+
+    socket.onmessage = function(event){
+        console.log(event.data);
+    }
+</script>
+</html>
