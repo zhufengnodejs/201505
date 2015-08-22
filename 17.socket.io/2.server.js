@@ -15,6 +15,8 @@ io.on('connection',function(socket){
    socket.send({user:'SYSTEM',content:'请输入呢称'});
    socket.on('disconnect',function(){
       console.log('用户已经断开');
+      delete users[username];
+      //socket.destroy();
    });
    //监听客户端的message事件
    socket.on('message',function(message){

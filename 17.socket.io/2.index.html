@@ -48,6 +48,7 @@ socket.on('connect',function(){
 });
 socket.on('disconnect',function(){
     addMsg({user:'SYSTEM',content:'断开连接'});
+    $('#sendBtn').prop('disabled',true);
 });
 socket.on('message',function(data){
     console.log('data',data);
