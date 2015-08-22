@@ -30,7 +30,6 @@ function WebSocket(address){//'ws://localhost:8080'
         self.socket = socket;
         socket.setEncoding('utf8');
         var serverkey = res.headers['sec-websocket-accept'];
-        console.log(serverkey,expKey);
         if(expKey == serverkey){
             self.emit('open');
         }
@@ -48,7 +47,7 @@ WebSocket.prototype.send = function(data){
 var ws = new WebSocket('ws://localhost:8080');
 ws.on('open',function(){
     console.log('opened');
-   ws.send('000');
+   ws.send('你好服务器');
 });
 ws.on('message',function(data){
     console.log(data);

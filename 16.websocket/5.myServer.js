@@ -40,5 +40,5 @@ var wss = new WebSocketServer({port:8080});
 wss.on('message',function(message){
         console.log('received:%s',message);
         //服务器向客户端发消息
-    wss.send('server hello');
+    wss.send('你好 客户端');
 });
