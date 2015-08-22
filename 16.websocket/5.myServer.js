@@ -13,10 +13,16 @@ function WebSocketServer(options,callback){
         return  shasum.digest('base64');
     }
  this._server = http.createServer(function(req,res){
-     res.end('not implemented');
+     var upgrade = req.headers['upgrade'];
+     if(upgrade){
+         this.emit('zf_upgrade');
+     }else{
+         res.end('over');
+     }
  });
  this._server.listen(options.port,options.host);
- this._server.on('upgrade',function(req,socket,upgradeHead){
+ this._server.on('zf_upgrade',function(req,socket,upgradeHead){
+     console.log('zf upgrade');
      self.socket = socket;
      socket.setEncoding('utf8');
      var key = req.headers['sec-websocket-key'];
