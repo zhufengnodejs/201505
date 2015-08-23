@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="/users/doAdd" method="post" enctype="multipart/form-data">
+    ID:<input type="text" name="id" value="<%=user.id%>"/>
+    username:<input type="text" name="username" value="<%=user.username%>"/>
+    头像 <input type="file" name="avatar"/>
+    <input type="submit" value="提交"/>
+</form>
+</body>
+</html>

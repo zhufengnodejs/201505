@@ -12,8 +12,8 @@
  * common name要匹配服务器域名
  * 1.生成服务器私钥
  *  openssl genrsa -out ./server/server.key 1024
- * --2.生成公钥
- * --  openssl rsa -in ./server/server.key -pubout -out ./server/server.pem
+ * 2.生成公钥
+ * openssl rsa -in ./server/server.key -pubout -out ./server/server.pem
  * 3.生成 csr
  * 一定要注意，common name要匹配服务器域名，请求的时候也要指定
  *  openssl req -new -key ./server/server.key -out ./server/server.csr
