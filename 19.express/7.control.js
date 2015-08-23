@@ -14,10 +14,10 @@ app.use(expressSession({
     store: new MongoStore({ url: 'mongodb://123.57.143.189/test-app' })
 }));
 app.get('/login',function(req,res){
-    if(1){
-        req.session.name = 'zfpx';
-        res.send('hello');
-    }
+        req.session.name = '11';
+        res.writeHead(200);
+    req.session.age = '222';
+        res.end('hello');
 
    // req.session.age = 6;
     //req.setHeader('Set-Cookie',"express:sess="+JSON.string({name:'zfpx'}.toString('base64')));
