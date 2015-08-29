@@ -1,0 +1,27 @@
+{
+  "name": "zhufengshop",
+  "version": "0.0.1",
+  "homepage": "https://github.com/zhufengnodejs/201505",
+  "authors": [
+    "zhangrenyang-t510 <zhang_renyang@>"
+  ],
+  "description": "这是一个购物车项目",
+  "keywords": [
+    "node",
+    "zhufeng",
+    "shop"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angular": "~1.4.5",
+    "angular-route": "~1.4.5"
+  }
+}
