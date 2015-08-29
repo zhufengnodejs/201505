@@ -4,25 +4,24 @@
  * Module dependencies.
  */
 
-var app = require('../app');
-var debug = require('debug')('zhufengshop:server');
-var http = require('http');
+var app = require('../app');//引入app中间件函数
+var debug = require('debug')('zhufengshop:server');//日志组件
+var http = require('http');//导入http服务器
 
 /**
- * Get port from environment and store in Express.
+ * 获取端口并保存至express
  */
-
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
- * Create HTTP server.
+ * 创建http服务器
  */
 
 var server = http.createServer(app);
 
 /**
- * Listen on provided port, on all network interfaces.
+ * 启动服务器，监听端口
  */
 
 server.listen(port);
@@ -38,7 +37,7 @@ function normalizePort(val) {
 
   if (isNaN(port)) {
     // named pipe
-    return val;
+    return val;//管道的方式 socket
   }
 
   if (port >= 0) {
