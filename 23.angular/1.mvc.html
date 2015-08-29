@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div ng-controller="appCtrl" >
+ {{name}}
+    {{age}}
+    {{person.age}}
+    <div ng-controller="app2Ctrl" >
+        {{name}}
+        {{age}}
+        {{person.age}}
+    </div>
+</div>
+
+<div>
+    {{name}}
+</div>
+</body>
+<script src="angular.js"></script>
+<script type="text/javascript">
+  var app = angular.module('appModule',[]);
+  //定义一个控制器
+  app.controller('appCtrl',function($rootScope,$scope){
+      $scope.name ='zfpx';
+      $rootScope.name = 'rootZfpx';
+      $rootScope.age = 7;
+      $rootScope.person = {
+          name:'zhangsan',
+          age:100
+      }
+  });
+  app.controller('app2Ctrl',function($rootScope,$scope){
+      $scope.name ='zfpx2';
+      $rootScope.name = 'rootZfpx2';
+      $rootScope.age = 72;
+      $rootScope.person = {
+          name:'zhangsan2',
+          age:1002
+      }
+  });
+</script>
+</html>

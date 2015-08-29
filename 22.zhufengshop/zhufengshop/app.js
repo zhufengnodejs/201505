@@ -13,7 +13,8 @@ var app = express();
 // 设置模板保存的目录
 app.set('views', path.join(__dirname, 'views'));
 //设置模板引擎
-app.set('view engine', 'ejs');
+app.set('view engine', 'html');
+app.engine('html',require('ejs').__express);
 
 //设置收藏夹图标
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

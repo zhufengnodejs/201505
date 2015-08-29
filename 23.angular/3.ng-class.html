@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .style_red{
+            background-color: red;
+        }
+        .style_green{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+<div ng-controller="appCtrl" >
+<p ng-show="color == 'green'" class="style_{{color}}">hello</p>
+<p ng-hide="color == 'red'" ng-class='{"style_red":color=="red","style_green":color=="green"}'>ng-class</p>
+<button ng-click="red()" >红色</button>
+<button ng-click="green()">绿色</button>
+</div>
+
+</body>
+<script src="angular.js"></script>
+<script type="text/javascript">
+  var app = angular.module('appModule',[]);
+  //定义一个控制器
+  app.controller('appCtrl',function($rootScope,$scope,$timeout){
+      $scope.color ='red';
+      $scope.red = function(){
+          $scope.color ='red';
+      }
+      $scope.green = function(){
+          $scope.color ='green';
+      }
+  });
+
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<div ng-controller="appCtrl" >
+ {{hello}}
+</div>
+
+</body>
+<script src="angular.js"></script>
+<script type="text/javascript">
+    var app = angular.module('appModule',[]);
+    app.controller('appCtrl',function($rootScope,$scope,httpService){
+        var promise = httpService.hello();
+        promise.success(function(data,status,headers){
+            $scope.hello =data;
+        });
+    });
+
+    //定义一个服务
+    app.factory('httpService',function($http){
+            return {
+                hello:function(){
+                   return  $http({
+                        method:'GET',
+                        url:'http://localhost:8080/hello'
+                    })
+                }
+            }
+    });
+
+</script>
+</html>

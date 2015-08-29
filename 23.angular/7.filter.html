@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<div ng-controller="appCtrl" >
+ {{num|bigger:10:10}}
+</div>
+<div ng-controller="appCtrl" >
+    {{num|bigger:20:20}}
+</div>
+
+</body>
+<script src="angular.js"></script>
+<script type="text/javascript">
+    var app = angular.module('appModule',[]);
+    app.controller('appCtrl',function($scope){
+        $scope.num = 777.777;
+    });
+
+    app.filter('bigger',function(){
+        return function(item){
+            var nums = Array.prototype.slice.call(arguments,1);
+            nums.forEach(function(num){
+                item+=num;
+            });
+            return item;
+        }
+    });
+
+</script>
+</html>

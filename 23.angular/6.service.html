@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="appModule">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<div ng-controller="appCtrl" >
+ {{age}}
+</div>
+
+</body>
+<script src="angular.js"></script>
+<script type="text/javascript">
+    var app = angular.module('appModule',[]);
+    app.controller('appCtrl',function($scope,ageService){
+        $scope.age = ageService.age;
+    });
+
+    //1 通过provider 返回的是$get属性的方法返回值
+    app.provider('ageProvider',{
+        age:3,
+        $get:function(){
+            return {age:this.age};
+        }
+    });
+    app.config(function(ageProviderProvider){
+        ageProviderProvider.age = 5;
+    });
+     //给一个工厂方法
+    app.factory('ageFactory',function(){
+        return {age:100}
+    });
+    //给定一个构造函数
+    app.service('ageService',function(){
+        this.age = 150;
+    });
+
+</script>
+</html>
