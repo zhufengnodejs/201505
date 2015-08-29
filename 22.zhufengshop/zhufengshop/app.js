@@ -11,7 +11,7 @@ var users = require('./routes/users');//用户Router
 var app = express();
 
 // 设置模板保存的目录
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'public'));
 //设置模板引擎
 app.set('view engine', 'html');
 app.engine('html',require('ejs').__express);

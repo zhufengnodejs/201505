@@ -1,8 +1,8 @@
 <div class="col-md-12">
     <div class="panel panel-default">
         <div class="panel-heading">注册</div>
+        <form action="" role="form" novalidate name="userform" class="form-horizontal" ng-submit="save()">
         <div class="panel-body">
-            <form role="form" novalidate name="userform" class="form-horizontal" ng-submit="save()">
                 <div class="form-group row" ng-class="{'has-error':userform.username.$dirty&&userform.username.$invalid}">
                     <label for="username" class="col-sm-offset-2 col-sm-2 control-label text-right">用户名</label>
                     <div class="input-group col-sm-4">
@@ -50,12 +50,12 @@
                         <span class="text-danger" ng-show="(userform.repassword.$dirty &&(user.password != user.repassword))">密码和确认密码不相等</span>
                     </div>
                 </div>
-            </form>
         </div>
         <div class="panel-footer">
             <div class="col-sm-offset-5 col-sm-1">
                 <button type="submit" class="btn btn-lg btn-primary btn-enter" ng-disabled="userform.$invalid || (userform.repassword.$dirty &&(user.password != user.repassword)) ">注册</button>
             </div>
         </div>
+        </form>
     </div>
 </div>

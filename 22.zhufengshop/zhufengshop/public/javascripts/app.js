@@ -18,9 +18,7 @@ angular.module('shopApp').controller('HomeCtrl',function(){
 
 });
 
-angular.module('shopApp').controller('RegCtrl',function(){
 
-});
 
 angular.module('shopApp').controller('LoginCtrl',function(){
 
