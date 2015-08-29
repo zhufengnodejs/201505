@@ -1,2 +1,2 @@
-var reg = /:([^\\/]+)/;
-console.log(reg.exec('/:abc(\d+)/'));
+var s = '123';
+console.log(s.slice(1,2));

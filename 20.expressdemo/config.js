@@ -1,8 +1,0 @@
-
-exports.route = function(app){
-
-
-
-
-
-}
