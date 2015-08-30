@@ -12,6 +12,16 @@ angular.module('shopApp',['ngRoute'])
         }).otherwise({
             redirectTo:'/'
         });
+    }).run(function($rootScope,$location,$http){
+        $http({
+            url:'/users/validate',
+            method:'GET'
+        }).success(function(user){
+            $rootScope.me = user;
+            $location.path('/');
+        }).error(function(data){
+            $location.path('/login');
+        });
     });
 
 angular.module('shopApp').controller('HomeCtrl',function(){

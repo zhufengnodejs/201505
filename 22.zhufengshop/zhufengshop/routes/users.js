@@ -7,7 +7,25 @@ function encrypt(content){
   return crypto.createHash('md5').update(content).digest('hex');
 }
 
+router.get('/validate',function(){
+  var userId = req.session.userId;
+  if(userId){
+    db.User.findOne({_id:userId},function(err,user){
+      if(err){
+        res.json(401,{msg:err});
+      }else{
+        res.json(user);
+      }
+    });
+  }else{
+    res.status(401).json({msg:err});
+  }
+});
 
+router.post('/logout',function(req,res){
+  req.session.userId = null;
+  res.json({msg:'退出成功'});
+});
 
 router.post('/reg',function(req,res){
   var user = req.body;
@@ -26,7 +44,6 @@ router.post('/reg',function(req,res){
 
 router.post('/login',function(req,res){
   var user = req.body;
-  console.log(user.username,encrypt(user.password));
   models.User.findOne({username:user.username,password:encrypt(user.password)},function(err,user){
     if(err){
       res.status(500).json({msg:err});
