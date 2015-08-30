@@ -5,7 +5,16 @@
     <title></title>
     <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.css"/>
 </head>
-<body style="margin-top: 50px">
+<body style="margin-top: 70px">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="NavBarCtrl">
+  <div class="navbar-header">
+      <a href="#/" class="navbar-brand">珠峰商城</a>
+  </div>
+  <ul class="nav navbar-nav">
+      <li><a href="#/reg">注册</a></li>
+      <li><a href="#/login">登录</a></li>
+  </ul>
+</nav>
 <div class="container">
     <div class="row" ng-view></div>
 </div>
@@ -16,4 +25,6 @@
 <script src="/vendor/angular-route/angular-route.js"></script>
 <script src="/javascripts/app.js"></script>
 <script src="/javascripts/controller/RegCtrl.js"></script>
+<script src="/javascripts/controller/LoginCtrl.js"></script>
+<script src="/javascripts/controller/NavBarCtrl.js"></script>
 </html>

@@ -23,4 +23,23 @@ router.post('/reg',function(req,res){
   });
 });
 
+
+router.post('/login',function(req,res){
+  var user = req.body;
+  console.log(user.username,encrypt(user.password));
+  models.User.findOne({username:user.username,password:encrypt(user.password)},function(err,user){
+    if(err){
+      res.status(500).json({msg:err});
+    }else{
+      if(user){
+        req.session.userId = user._id;
+        res.json(user);
+      }else{
+        res.status(401).json({msg:'此用户不合法'});
+      }
+
+    }
+  });
+});
+
 module.exports = router;

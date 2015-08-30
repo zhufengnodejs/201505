@@ -4,7 +4,8 @@ var favicon = require('serve-favicon');//处理收藏夹图标
 var logger = require('morgan');//日志组件
 var cookieParser = require('cookie-parser');//解析cookie  req.cookies={}
 var bodyParser = require('body-parser');//解析请求体 req.body
-
+var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 var routes = require('./routes/index');//主页Router
 var users = require('./routes/users');//用户Router
 
@@ -22,6 +23,14 @@ app.use(logger('dev'));//输出日志 并设置日志的格式
 app.use(bodyParser.json());//解析请求体 application/json
 app.use(bodyParser.urlencoded({ extended: false }));//解析请求体 application/urlencoded
 app.use(cookieParser());//解析cookie
+app.use(session({
+  secret:'zhufengshop',
+  resave:true,
+  saveUninitialized:true,
+  cookie:{
+    maxAge:60*60*1000
+  }
+}));
 app.use(express.static(path.join(__dirname, 'public')));//设置静态文件中间件
 
 app.use('/', routes);//设置路由
