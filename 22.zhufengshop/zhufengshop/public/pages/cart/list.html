@@ -1,0 +1,43 @@
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="pull-left">
+                <button class="btn btn-danger" batch-delete-goods>批量删除</button>
+            </div>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped table-responsive">
+                <thead>
+                    <tr>
+                        <td class="text-center"><input type="checkbox" select-all-carts id="selectAllCarts"/></td>
+                        <td>名称</td>
+                        <td>价格</td>
+                        <td>图片</td>
+                        <td>数量</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="cart in carts track by $index">
+                        <td><input type="checkbox" data-price="{{cart.gId.price}}" data-id="{{cart._id}}" name="chkItem" select-cart-item /></td>
+                        <td>{{cart.gId.name}}</td>
+                        <td><span  class="glyphicon glyphicon-yen">{{cart.gId.price}}</span></td>
+                        <td><img style="width:50px;height:50px" ng-src="{{cart.gId.imgSrc}}" alt="{{cart.gId.name}}"/></td>
+                        <td>
+                            <a data-id="{{cart._id}}" href="javascript:void(0)" change-quantity="1" class="btn btn-success btn-xs">+</a>
+                            <input type="text" value="{{cart.quantity}}"/>
+                            <a data-id="{{cart._id}}" href="javascript:void(0)" change-quantity="-1" class="btn btn-warning btn-xs">-</a>
+                        </td>
+                        <td class="text-center">
+                            <button data-index="{{$index}}" class="btn btn-danger" delete-goods>删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-footer text-center">
+            <span>总计: <span id="total" class="glyphicon glyphicon-yen"></span></span>
+            <input type="button" class="form-control" ng-click="settle()" value="结算"/>
+        </div>
+    </div>
+</div>

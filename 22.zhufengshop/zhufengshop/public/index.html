@@ -16,6 +16,7 @@
       <li ng-hide="me" ng-class="{active:isActive('/login')}"><a href="#/login">登录</a></li>
       <li ng-show="me" ng-class="{active:isActive('/goods/front/list')}"><a href="#/goods/front/list">浏览商品</a></li>
       <li ng-show="me" ng-class="{active:isActive('/goods/back/list')}"><a href="#/goods/back/list">商品管理</a></li>
+      <li ng-show="me" ng-class="{active:isActive('/cart/list')}"><a href="#/cart/list">购物车</a></li>
   </ul>
     <ul class="nav-navbar-nav navbar-right" ng-show="me">
         <li class="dropdown">
@@ -36,7 +37,10 @@
 <script src="/vendor/angular-route/angular-route.js"></script>
 <script src="/javascripts/app.js"></script>
 <script src="/javascripts/controller/RegCtrl.js"></script>
+<script src="/javascripts/service/DataService.js"></script>
 <script src="/javascripts/controller/LoginCtrl.js"></script>
 <script src="/javascripts/controller/NavBarCtrl.js"></script>
 <script src="/javascripts/controller/GoodsCtrl.js"></script>
+<script src="/javascripts/controller/CartCtrl.js"></script>
+
 </html>

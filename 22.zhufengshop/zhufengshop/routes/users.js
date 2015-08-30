@@ -7,10 +7,11 @@ function encrypt(content){
   return crypto.createHash('md5').update(content).digest('hex');
 }
 
-router.get('/validate',function(){
+router.post('/validate',function(req,res){
   var userId = req.session.userId;
+  console.error('userId',userId);
   if(userId){
-    db.User.findOne({_id:userId},function(err,user){
+    models.User.findOne({_id:userId},function(err,user){
       if(err){
         res.json(401,{msg:err});
       }else{
@@ -18,7 +19,7 @@ router.get('/validate',function(){
       }
     });
   }else{
-    res.status(401).json({msg:err});
+    res.status(401).json({msg:'不存在'});
   }
 });
 

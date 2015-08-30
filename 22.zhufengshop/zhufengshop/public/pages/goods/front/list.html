@@ -1,0 +1,45 @@
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading clearfix">
+            <div class="pull-right">
+                <input type="text" placeholder="请输入关键字" name="keyword" ng-model="keyword" ng-change="filter()"/>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-3 thumbnail" ng-repeat="good in filterGoods track by $index">
+                        <img style="width:200px;height:200px" ng-src="{{good.imgSrc}}" alt="{{good.name}}"/>
+                        <div class="caption">
+                            <h3>{{good.name}}</h3>
+                            <p> <span class="glyphicon glyphicon-yen">{{good.price}}</span> </p>
+                            <p><a href="javascript:void(0)" class="btn btn-success" ng-click="addCart(good._id)">加入购物车</a></p>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer text-center">
+            <ul class="pagination pagination-md">
+                <li ng-class="{disabled:pageNumber==1}"><span ng-click="go(pageNumber-1)">上一页</span></li>
+                <li ng-repeat="page in pages" ng-class="{active:$index+1 == pageNumber}"><span ng-click="go($index+1)">{{page}}</span></li>
+                <li ng-class="{disabled:pageNumber==totalPage}"><span ng-click="go(pageNumber+1)">下一页</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="addCartDoneDialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">&times;</button>
+                <h4 modal-title>友情提示</h4>
+            </div>
+            <div class="modal-body">
+                你已经添加购物车成功!
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default"  data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>

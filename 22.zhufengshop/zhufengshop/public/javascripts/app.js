@@ -12,13 +12,19 @@ angular.module('shopApp',['ngRoute'])
         }).when('/goods/back/list',{
             templateUrl:'pages/goods/back/list.html',
             controller:'GoodsCtrl'
+        }).when('/goods/front/list',{
+            templateUrl:'pages/goods/front/list.html',
+            controller:'GoodsCtrl'
+        }).when('/cart/list',{
+            templateUrl:'pages/cart/list.html',
+            controller:'CartCtrl'
         }).otherwise({
             redirectTo:'/'
         });
     }).run(function($rootScope,$location,$http){
         $http({
             url:'/users/validate',
-            method:'GET'
+            method:'POST'
         }).success(function(user){
             $rootScope.me = user;
             $location.path('/');
