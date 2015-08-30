@@ -8,7 +8,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var routes = require('./routes/index');//主页Router
 var users = require('./routes/users');//用户Router
-
+var goods = require('./routes/goods');
 var app = express();
 
 // 设置模板保存的目录
@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));//设置静态文件中�
 
 app.use('/', routes);//设置路由
 app.use('/users', users);//设置用户路由
-
+app.use('/goods', goods);
 //捕获404错误并转发到错误处理中间件上
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

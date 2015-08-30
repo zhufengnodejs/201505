@@ -43,13 +43,13 @@ router.post('/reg',function(req,res){
 
 
 router.post('/login',function(req,res){
-  var user = req.body;
-  models.User.findOne({username:user.username,password:encrypt(user.password)},function(err,user){
+  models.User.findOne({username:req.body.username,password:encrypt(req.body.password)},{username:1},function(err,user){
     if(err){
       res.status(500).json({msg:err});
     }else{
       if(user){
         req.session.userId = user._id;
+        delete user['password'];
         res.json(user);
       }else{
         res.status(401).json({msg:'此用户不合法'});

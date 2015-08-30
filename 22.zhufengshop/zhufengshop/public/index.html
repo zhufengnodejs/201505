@@ -14,6 +14,8 @@
       <li ng-show="me" ng-class="{active:isActive('/home')}"><a href="#/home">首页</a></li>
       <li ng-hide="me" ng-class="{active:isActive('/reg')}"><a href="#/reg">注册</a></li>
       <li ng-hide="me" ng-class="{active:isActive('/login')}"><a href="#/login">登录</a></li>
+      <li ng-show="me" ng-class="{active:isActive('/goods/front/list')}"><a href="#/goods/front/list">浏览商品</a></li>
+      <li ng-show="me" ng-class="{active:isActive('/goods/back/list')}"><a href="#/goods/back/list">商品管理</a></li>
   </ul>
     <ul class="nav-navbar-nav navbar-right" ng-show="me">
         <li class="dropdown">
@@ -36,4 +38,5 @@
 <script src="/javascripts/controller/RegCtrl.js"></script>
 <script src="/javascripts/controller/LoginCtrl.js"></script>
 <script src="/javascripts/controller/NavBarCtrl.js"></script>
+<script src="/javascripts/controller/GoodsCtrl.js"></script>
 </html>

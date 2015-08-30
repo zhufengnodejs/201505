@@ -6,3 +6,8 @@ exports.User = mongoose.model('User',new mongoose.Schema({
     email:String,
     avatar:String
 }));
+exports.Goods = mongoose.model('Goods',new mongoose.Schema({
+    name:String,
+    price:Number,
+    imgSrc:String
+}));

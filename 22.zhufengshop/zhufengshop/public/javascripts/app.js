@@ -9,6 +9,9 @@ angular.module('shopApp',['ngRoute'])
         }).when('/login',{
             templateUrl:'pages/login.html',
             controller:'LoginCtrl'
+        }).when('/goods/back/list',{
+            templateUrl:'pages/goods/back/list.html',
+            controller:'GoodsCtrl'
         }).otherwise({
             redirectTo:'/'
         });
